@@ -32,6 +32,44 @@ Este proyecto es una aplicación web para la gestión de préstamos bancarios. P
 
 ---
 
+### DB Postgres tablas
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY, -- Identificador único para cada cliente
+    nombre VARCHAR(100) NOT NULL, -- Nombre del cliente
+    email VARCHAR(100) UNIQUE NOT NULL, -- Correo electrónico único
+    telefono VARCHAR(15) NOT NULL, -- Teléfono del cliente
+	 cedula VARCHAR(10) NOT NULL, -- cedula del cliente la cual utilizara de contraseña
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de creación del registro
+);
+
+CREATE TABLE administradores (
+    id SERIAL PRIMARY KEY, -- Identificador único para cada administrador
+    nombre VARCHAR(100) NOT NULL, -- Nombre del administrador
+    email VARCHAR(100) UNIQUE NOT NULL, -- Correo electrónico único
+    contrasena VARCHAR(255) NOT NULL, -- Contraseña (debería estar encriptada)
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de creación del registro
+);
+
+CREATE TABLE prestamos (
+    id SERIAL PRIMARY KEY, -- Identificador único para cada préstamo
+    cliente_id INT NOT NULL, -- Relación con el cliente que solicita el préstamo
+    monto NUMERIC(10, 2) NOT NULL, -- Monto del préstamo
+    plazo INT NOT NULL, -- Plazo en meses
+    estado VARCHAR(50) DEFAULT 'pendiente', -- Estado del préstamo (pendiente, aprobado, rechazado)
+    fecha_solicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de solicitud del préstamo
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de última actualización del estado
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE -- Relación con la tabla clientes
+);
+
+INSERT INTO clientes (nombre, email, telefono, cedula) 
+VALUES ('Juan Cuesta', 'juan.cuesta@example.com', '123456789', '1234567890');
+
+INSERT INTO administradores (nombre, email, contrasena) 
+VALUES ('Admin1', 'admin1@example.com', 'password123');
+
+INSERT INTO prestamos (cliente_id, monto, plazo, estado) 
+VALUES (1, 5000.00, 12, 'pendiente');
+
 ## Instalación
 
 ### Requisitos previos:
