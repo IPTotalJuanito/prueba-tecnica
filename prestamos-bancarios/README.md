@@ -42,5 +42,5 @@ Este proyecto es una aplicación web para la gestión de préstamos bancarios. P
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/gestion-prestamos-bancarios.git
+   git clone https://github.com/IPTotalJuanito/prueba-tecnica.git
    cd gestion-prestamos-bancarios
