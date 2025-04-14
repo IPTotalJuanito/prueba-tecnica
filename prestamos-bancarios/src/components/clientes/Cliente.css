@@ -1,0 +1,30 @@
+.cliente{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.cliente p{
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-elimar-cliente{
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.btn-elimar-cliente:hover{
+  background-color: #c82333;
+}

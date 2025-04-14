@@ -1,0 +1,17 @@
+.contenedor-formulario{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.titulo-contenedor{
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.contenedor-clientes{
+  display: flex;
+  flex-direction: row;
+}
