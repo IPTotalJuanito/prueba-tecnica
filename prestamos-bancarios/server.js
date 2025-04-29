@@ -1,19 +1,23 @@
+/* eslint-disable no-undef */
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
 import authMiddleware from "./middleware/authMiddleware.js";
 import pkg from "pg";
+import dotenv from "dotenv"; // Importa dotenv
+
+dotenv.config(); // Carga las variables del archivo .env
 
 const { Pool } = pkg;
 
 const app = express();
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "gestion_prestamos",
-  password: "Antonio2000",
-  port: 5432,
+  user: process.env.DATABASE_USER, // Usa las variables del .env
+  host: process.env.DATABASE_HOST,
+  database: process.env.DATABASE_NAME,
+  password: process.env.DATABASE_PASSWORD,
+  port: process.env.DATABASE_PORT,
 });
 
 app.use(cors());
