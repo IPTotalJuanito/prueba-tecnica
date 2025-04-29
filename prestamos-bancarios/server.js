@@ -107,10 +107,6 @@ app.get("/api/clientes", async (req, res) => {
 
 // Ruta para crear un nuevo cliente
 app.post("/api/clientes", authMiddleware, async (req, res) => {
-  if (req.user.role !== "admin") {
-    return res.status(403).json({ message: "Acceso denegado" });
-  }
-
   const { nombre, email, telefono, cedula } = req.body;
 
   try {
@@ -172,13 +168,13 @@ app.get("/api/prestamos/:id", authMiddleware, async (req, res) => {
 });
 
 // Ruta para cambiar el estado de un préstamo
-app.get("/api/prestamos/:prestamoId", authMiddleware, async (req, res) => {
+app.put("/api/prestamos/:prestamoId", authMiddleware, async (req, res) => {
   const { prestamoId } = req.params;
-
+  const { estado } = req.body;
   try {
     const result = await pool.query(
-      "SELECT * FROM prestamos WHERE id = $1",
-      [prestamoId]
+      "UPDATE prestamos SET estado = $1 WHERE id = $2 RETURNING *",
+      [estado, prestamoId]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ message: "Préstamo no encontrado" });

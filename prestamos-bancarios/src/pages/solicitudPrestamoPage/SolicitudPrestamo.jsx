@@ -1,3 +1,4 @@
+import "./SolicitudPrestamo.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -55,20 +56,10 @@ const SolicitudPrestamo = () => {
   };
 
   return (
-    <div>
+    <div className="solicitud-prestamo-page">
       <h2>Solicitud de Préstamo</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre:</label>
-          <input
-            type="text"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <div>
           <label>Monto:</label>
           <input
@@ -89,7 +80,9 @@ const SolicitudPrestamo = () => {
             required
           />
         </div>
+        <div className="boton-submit">
         <button type="submit">Solicitar</button>
+        </div>
       </form>
 
       <h3>Mis Préstamos</h3>

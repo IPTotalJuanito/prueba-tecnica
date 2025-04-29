@@ -25,7 +25,9 @@ export const Cliente = ({ cliente, setClientes }) => {
     if (nombre && email && telefono) {
       fetch(`http://localhost:5000/api/clientes/${cliente.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+         },
         body: JSON.stringify({ nombre, email, telefono }),
       })
         .then((response) => response.json())
@@ -51,11 +53,11 @@ export const Cliente = ({ cliente, setClientes }) => {
       <p>Email: {cliente.email}</p>
       <p>Teléfono: {cliente.telefono}</p>
       <p>Cédula: {cliente.cedula}</p> {/* Mostrar cédula */}
-      <button onClick={handleEdit}>Editar</button>
-      <button className="btn-elimar-cliente" onClick={handleDelete}>
+      <button className="btn-default" onClick={handleEdit}>Editar</button>
+      <button className="btn-eliminar-cliente" onClick={handleDelete}>
         Eliminar
       </button>
-      <button onClick={handleViewPrestamos}>Listado de Préstamos</button>
+      <button className='btn-default' onClick={handleViewPrestamos}>Listado de Préstamos</button>
     </div>
   );
 };

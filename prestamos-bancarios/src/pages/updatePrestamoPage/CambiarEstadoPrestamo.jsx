@@ -1,3 +1,4 @@
+import "./CambiarEstadoPrestamo.css";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -57,7 +58,7 @@ const CambiarEstadoPrestamo = () => {
 
   
   return (
-    <div>
+    <div className="cambiar-estado-prestamo-page">
       <h2>Cambiar Estado del Préstamo</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {prestamo ? (
@@ -70,7 +71,9 @@ const CambiarEstadoPrestamo = () => {
               <option value="rechazado">Rechazado</option>
             </select>
           </label>
+          <div className="boton-submit">
           <button type="submit">Actualizar Estado</button>
+          </div>
         </form>
       ) : (
         <p>Cargando datos del préstamo...</p>

@@ -1,3 +1,4 @@
+import "./LoginPage.css";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +44,7 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h2>Iniciar Sesión</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -65,7 +66,9 @@ const LoginPage = ({ onLogin }) => {
             required
           />
         </div>
+        <div className="boton-submit">
         <button type="submit">Iniciar Sesión</button>
+        </div>
       </form>
     </div>
   );

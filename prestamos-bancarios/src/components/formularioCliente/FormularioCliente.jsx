@@ -18,7 +18,9 @@ export const FormularioCliente = ({ setClientes }) => {
     e.preventDefault();
     fetch("http://localhost:5000/api/clientes", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+       },
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
@@ -31,6 +33,7 @@ export const FormularioCliente = ({ setClientes }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className='title-form'>Crear Cliente</div>
       <div>
         <label>Nombre:</label>
         <input
@@ -71,7 +74,9 @@ export const FormularioCliente = ({ setClientes }) => {
           required
         />
       </div>
+      <div className="boton-submit">
       <button type="submit">Crear Cliente</button>
+      </div>
     </form>
   );
 };

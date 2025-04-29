@@ -6,18 +6,26 @@ form {
   width: 50%;
 }
 
+.title-form {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
 form div {
   margin-bottom: 1rem;
 }
 
 form label {
-  display: block;
+  display: flex;
+  justify-content: space-evenly;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 form input {
-  width: 90%;
+  width: 95%;
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -34,4 +42,10 @@ form button {
 
 form button:hover {
   background-color: #0056b3;
+}
+
+.boton-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

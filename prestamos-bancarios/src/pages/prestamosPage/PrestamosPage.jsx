@@ -1,3 +1,4 @@
+import "./PrestamosPage.css";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -34,24 +35,24 @@ const PrestamosPage = () => {
 
   console.log(prestamos); // Para depuración
   return (
-    <div>
+    <div className="prestamos-page">
       <h2>Listado de Préstamos</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {prestamos.length === 0 ? (
         <p>No hay préstamos registrados para este cliente.</p>
       ) : (
-        <ul>
+        <div className="prestamos-list">
           {prestamos.map((prestamo) => (
-            <li key={prestamo.id}>
+            <div key={prestamo.id} className="prestamo-item">
               <p>Monto: {prestamo.monto}</p>
               <p>Plazo: {prestamo.plazo} meses</p>
               <p>Estado: {prestamo.estado}</p>
-              <button onClick={() => handleChangeEstado(prestamo.id)}>
+              <button className="btn-default" onClick={() => handleChangeEstado(prestamo.id)}>
                 Cambiar Estado
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
